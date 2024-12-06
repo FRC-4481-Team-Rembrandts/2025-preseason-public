@@ -1,0 +1,22 @@
+name: Generate Javadoc
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate javadoc for Github Pages
+        uses: dev-vince/actions-publish-javadoc@v1.0.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN_JOCHEM }}
+          java-version: '17'
+          java-distribution: 'temurin'
+          project: 'gradle'
+          branch: 'docs'
